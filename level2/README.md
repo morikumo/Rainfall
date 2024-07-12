@@ -110,6 +110,8 @@ Nous pouvons essayer de copier un shellcode dans le tas et utiliser l'adresse al
 
 ### Shellcode
 
+Nous le trouvons sur ce site : https://shell-storm.org/shellcode/files/shellcode-575.html
+
 Nous utiliserons le shellcode suivant de 21 octets :
 
 ```
