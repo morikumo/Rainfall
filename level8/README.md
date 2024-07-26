@@ -1,5 +1,3 @@
-Vous avez raison. Je vais reformuler le README pour le rendre plus accessible aux débutants en exploitation binaire. Voici une version plus détaillée et pédagogique :
-
 # Level 8 - Introduction à l'exploitation binaire
 
 ## Contexte
