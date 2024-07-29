@@ -1,5 +1,3 @@
-Certainement ! Voici une version plus détaillée du README, incorporant l'explication du NOP sled et d'autres détails importants :
-
 # Exploit détaillé pour bonus0
 
 ## Description du problème
