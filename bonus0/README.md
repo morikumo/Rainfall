@@ -11,6 +11,67 @@ Le binaire bonus0 présente une vulnérabilité de débordement de tampon. Il li
 - NX désactivé (permet l'exécution de code sur la pile)
 - Pas de PIE (les adresses sont prévisibles)
 
+## Code décompilé
+
+```c
+void p(char *param_1, char *param_2)
+{
+  char *pcVar1;
+  char local_100c [4104];
+  
+  puts(param_2);
+  read(0, local_100c, 0x1000);
+  pcVar1 = strchr(local_100c, 10);
+  *pcVar1 = '\0';
+  strncpy(param_1, local_100c, 0x14);
+  return;
+}
+
+void pp(char *param_1)
+{
+  char cVar1;
+  uint uVar2;
+  char *pcVar3;
+  byte bVar4;
+  char local_34 [20];
+  char local_20 [20];
+  
+  bVar4 = 0;
+  p(local_34, &DAT_080486a0);
+  p(local_20, &DAT_080486a0);
+  strcpy(param_1, local_34);
+  uVar2 = 0xffffffff;
+  pcVar3 = param_1;
+  do {
+    if (uVar2 == 0) break;
+    uVar2 = uVar2 - 1;
+    cVar1 = *pcVar3;
+    pcVar3 = pcVar3 + (uint)bVar4 * -2 + 1;
+  } while (cVar1 != '\0');
+  *(undefined2 *)(param_1 + (~uVar2 - 1)) = 0x20;
+  strcat(param_1, local_20);
+  return;
+}
+
+undefined4 main(void)
+{
+  char local_3a [54];
+  
+  pp(local_3a);
+  puts(local_3a);
+  return 0;
+}
+```
+
+## Analyse du code
+
+- La fonction `p` lit jusqu'à 4096 octets d'entrée dans un buffer local, puis copie 20 octets dans le paramètre fourni.
+- La fonction `pp` appelle `p` deux fois, stockant les résultats dans des buffers locaux de 20 octets chacun.
+- `pp` concatène ensuite ces deux buffers dans le paramètre fourni, avec un espace entre eux.
+- La fonction `main` appelle `pp` avec un buffer local de 54 octets.
+
+La vulnérabilité principale réside dans le fait que `strncpy` dans `p` ne garantit pas la terminaison de la chaîne, et que `strcpy` et `strcat` dans `pp` peuvent écrire au-delà des limites du buffer `local_3a` dans `main`.
+
 ## Shellcode utilisé
 
 ```
@@ -18,6 +79,8 @@ Le binaire bonus0 présente une vulnérabilité de débordement de tampon. Il li
 ```
 
 Ce shellcode de 21 octets exécute `/bin/sh`.
+
+[Le reste du README reste inchangé...]
 
 ## Structure de l'exploit
 
