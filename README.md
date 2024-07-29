@@ -73,11 +73,11 @@ Pour atteindre ces objectifs, les outils suivants sont fréquemment utilisés :
     - NX empêche l'exécution de code sur la pile.
     - Désactivé, permettant l'exécution de code injecté sur la pile.
 
-11. PIE: No PIE
+11. **PIE: No PIE**
     - Rend aléatoire l'emplacement du programme en mémoire.
     - Non activé, facilitant la prédiction des adresses.
 
-12. RPATH/RUNPATH: No RPATH, No RUNPATH
+12. **RPATH/RUNPATH: No RPATH, No RUNPATH**
     - Chemins de recherche pour les bibliothèques partagées.
     - Non définis, ce qui est généralement plus sûr.
 
