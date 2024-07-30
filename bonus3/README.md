@@ -1,6 +1,3 @@
-Bien sûr, voici le README mis à jour avec le code décompilé inclus :
-
-```markdown
 # Bonus3 - Exploitation binaire
 
 ## Configuration
