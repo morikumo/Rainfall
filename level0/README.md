@@ -4,6 +4,36 @@ Ce projet vise à identifier et exploiter une vulnérabilité dans le programme 
 
 ## Étapes suivies
 
+## Code décomplié
+
+## Code décompilé
+
+```c
+int main(int argc, char *argv[])
+{
+  int     nb;
+  char    *execv_arg[2];
+  uid_t   uid;
+  gid_t   gid;
+
+  nb = atoi(argv[1]);
+
+  if (nb == 423)
+  {
+    execv_arg[0] = strdup("/bin/bash");
+    execv_arg[1] = NULL;
+
+    gid = getegid();
+    uid = geteuid();
+    setresgid(gid, gid, gid);
+    setresuid(uid, uid, uid);
+    execv("/bin/sh", execv_arg);
+  }
+  else
+    fwrite("No !\n", 1, 5, stderr);
+}
+```
+
 ### 1. Analyse du système
 
 Le système a certaines protections activées, mais l'ASLR (Address Space Layout Randomization) est désactivé. L'ASLR rend les adresses mémoire imprévisibles, rendant les exploits plus difficiles. Sans ASLR, les adresses sont fixes et donc plus faciles à cibler.
