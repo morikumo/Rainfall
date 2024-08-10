@@ -155,7 +155,3 @@ Toutes ces adresses sont dans la plage du NOP sled, augmentant les chances de su
 - Le NOP sled rend l'exploit plus robuste face à ces variations.
 - Tester différentes adresses dans la plage du NOP sled peut être nécessaire.
 
-## Précautions et usage éthique
-
-Cet exploit est fourni uniquement à des fins éducatives et de recherche en sécurité. Ne l'utilisez que sur des systèmes pour lesquels vous avez une autorisation explicite. L'utilisation non autorisée de cet exploit peut être illégale et non éthique.
-
