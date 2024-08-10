@@ -28,6 +28,35 @@ Nous allons analyser et décompiler l'exécutable pour comprendre son comporteme
 
 ## Analyse et Décompilation
 
+## Code décomplié 
+
+```c
+void    p(void)
+{
+    int     memory;
+    char    buffer[76];
+
+    fflush(stdout);
+
+    gets(buffer);
+
+    if (memory & 0xb0000000)
+    {
+        printf("(%p)\n", &memory);
+        exit(1);
+    }
+
+    puts(buffer);
+    strdup(buffer);
+}
+
+int     main(void)
+{
+    p();
+    return (0);
+}
+```
+
 ### Fonction `main`
 
 Après décompilation, nous observons que la fonction `main` appelle la fonction `p` :
