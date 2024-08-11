@@ -42,13 +42,9 @@ La fonction `p` utilise `printf` avec un argument utilisateur sans spécificateu
 
 ## Voici une explication simplifiée de ce que cela pourrait représenter :
 
-%16930112d : Cela pourrait être une spécification de format utilisée pour formater un entier (d pour "decimal") avec une largeur spécifique de 16930112 caractères. Dans un contexte de formatage de chaîne en C, cela pourrait potentiellement causer des comportements inattendus, comme des dépassements de tampon.
+# %16930112d : Cela est une spécification de format utilisée pour formater un entier (d pour "decimal") avec une largeur spécifique de 16930112 caractères.
 
-%12$n : Cela indique que le 12e argument passé à la fonction de formatage (comme printf) devrait être interprété comme une adresse où écrire un nombre. C'est une technique couramment utilisée dans les attaques de type format string, où un attaquant essaie de manipuler directement la mémoire du programme.
-
-= 0x1025544 : Cela pourrait représenter l'adresse en mémoire ou une valeur hexadécimale attendue ou générée par cette chaîne de formatage.
-
-
+# %12$n : Cela indique que le 12e argument passé à la fonction de formatage printf devrait être interprété comme une adresse. C'est une technique couramment utilisée dans les attaques de type format string, où un attaquant essaie de manipuler directement la mémoire du programme.
 
 ### Identification de la position de l'argument
 
