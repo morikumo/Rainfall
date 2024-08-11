@@ -181,8 +181,6 @@ level2@RainFall:~$ cat /home/user/level2/.pass
 
 ## Conclusion
 
-Nous avons réussi à exploiter la vulnérabilité de débordement de tampon dans `level2` en utilisant le tas (heap) pour stocker notre shellcode et en écrasant l
-
-'adresse de retour pour pointer vers cette région. Cela nous a permis d'exécuter le shellcode et d'obtenir un shell avec les privilèges de `level3`, nous permettant de lire le flag pour le niveau suivant.
+Nous avons réussi à exploiter la vulnérabilité de débordement de tampon dans `level2` en utilisant le tas (heap) pour stocker notre shellcode et en écrasant l'adresse de retour pour pointer vers cette région. Cela nous a permis d'exécuter le shellcode et d'obtenir un shell avec les privilèges de `level3`, nous permettant de lire le flag pour le niveau suivant.
 
 Level2 passé avec succès !
