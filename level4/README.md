@@ -40,11 +40,11 @@ void main(void) {
 
 La fonction `p` utilise `printf` avec un argument utilisateur sans spécificateur de format, ce qui est vulnérable à une attaque par chaîne de format. La condition pour exécuter la commande `system` est que la variable `m` soit égale à `0x1025544`.
 
-## Voici une explication simplifiée de ce que cela pourrait représenter :
+### Voici une explication simplifiée de ce que cela pourrait représenter :
 
-# %16930112d : Cela est une spécification de format utilisée pour formater un entier (d pour "decimal") avec une largeur spécifique de 16930112 caractères.
+#### %16930112d : Cela est une spécification de format utilisée pour formater un entier (d pour "decimal") avec une largeur spécifique de 16930112 caractères.
 
-# %12$n : Cela indique que le 12e argument passé à la fonction de formatage printf devrait être interprété comme une adresse. C'est une technique couramment utilisée dans les attaques de type format string, où un attaquant essaie de manipuler directement la mémoire du programme.
+#### %12$n : Cela indique que le 12e argument passé à la fonction de formatage printf devrait être interprété comme une adresse. C'est une technique couramment utilisée dans les attaques de type format string, où un attaquant essaie de manipuler directement la mémoire du programme.
 
 ### Identification de la position de l'argument
 
