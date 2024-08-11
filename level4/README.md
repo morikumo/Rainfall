@@ -40,7 +40,7 @@ void main(void) {
 
 La fonction `p` utilise `printf` avec un argument utilisateur sans spécificateur de format, ce qui est vulnérable à une attaque par chaîne de format. La condition pour exécuter la commande `system` est que la variable `m` soit égale à `0x1025544`.
 
-##Voici une explication simplifiée de ce que cela pourrait représenter :
+## Voici une explication simplifiée de ce que cela pourrait représenter :
 
 %16930112d : Cela pourrait être une spécification de format utilisée pour formater un entier (d pour "decimal") avec une largeur spécifique de 16930112 caractères. Dans un contexte de formatage de chaîne en C, cela pourrait potentiellement causer des comportements inattendus, comme des dépassements de tampon.
 
